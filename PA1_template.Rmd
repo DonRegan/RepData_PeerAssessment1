@@ -17,7 +17,7 @@ names(activity)
 head(activity)
 ```
 - **What is mean total number of steps taken per day?**
-```{r}
+```{r,fig.width=6, fig.height=4}
 ## Mean total number of steps per day. Ignore missing values.
 echo=TRUE
 steps_per_day<-tapply(activity$steps,activity$date,sum,na.rm=T)
@@ -32,12 +32,13 @@ c(median_steps,mean_steps)
 ```
 
 - **What is the average daily activity pattern?**
-```{r}
+```{r,fig.width=6, fig.height=4}
 echo=TRUE
 mean_steps_per_interval<-tapply(activity$steps,activity$interval,mean,na.rm=T)
 df_activity<-data.frame(interval=unique(activity$interval),steps=mean_steps_per_interval)
 plot(df_activity,type="l",xlab="5 minute interval",ylab="Mean steps per interval",main="Average steps made in each 5 minute interval")
 ```
+
 Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 ```{r}
 echo=TRUE
@@ -85,7 +86,7 @@ Conclusion: properties look the same aside from the fact that in activity_new th
 I've two approaches and I'll list them both below.
 
     - Approach 1: Create variable according to weekday/weekend. Then filter/subset the data. Use the subsetted data to get the mean number of steps for the weekday/weekend. Combine them in a dataframe and make the plot separated by category of weekday/weekend.
-```{r}
+```{r,fig.width=6, fig.height=4}
 echo=TRUE
 activity_new$weekday_end<-c("weekday")
 activity_new[weekdays(as.Date(activity_new$date)) %in% c("Saturday","Sunday"),]$weekday_end<-c("weekend")
