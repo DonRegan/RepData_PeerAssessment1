@@ -109,5 +109,5 @@ echo=TRUE
 steps_per_interval_weekend<-activity_new %>% filter(weekday_end %in% c("weekend")) %>% group_by(interval) %>% summarise(avgsteps=mean(steps),weekday_end=factor("weekend"))
 steps_per_interval_weekday<-activity_new %>% filter(weekday_end %in% c("weekday")) %>% group_by(interval) %>% summarise(avgsteps=mean(steps),weekday_end=factor("weekday"))
 steps_per_interval<-rbind(steps_per_interval_weekend,steps_per_interval_weekday)
-xyplot(avgsteps~interval | weekday_end,layout=c(1,2),data=steps_per_interval,type="l",xlab="Interval",ylab="Number of steps")
+#xyplot(avgsteps~interval | weekday_end,layout=c(1,2),data=steps_per_interval,type="l",xlab="Interval",ylab="Number of steps")
 ```
